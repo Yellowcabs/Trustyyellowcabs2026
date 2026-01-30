@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="/image/png" href="/images/trusty favicon.png" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
     <meta name="theme-color" content="#FDB813" />
     <title>Trustyyellowcabs - Premium Taxi Service</title>
     <!-- Modern, clean font -->
@@ -117,12 +118,12 @@
 </script>
 
 <style>
-  /* Prevent mobile zoom on inputs, textareas, selects */
+  /* Prevent mobile zoom on inputs */
   input,
   textarea,
   select {
-    font-size: 16px;   /* must be 16px or larger */
-    line-height: 1.5;  /* optional for readability */
+    font-size: 16px;  /* minimum required to stop zoom */
+    line-height: 1.5; /* optional for readability */
   }
 
   /* Optional: remove blue focus outline */
@@ -131,6 +132,7 @@
     outline: none;
   }
 </style>
+
 
 
 <style>
