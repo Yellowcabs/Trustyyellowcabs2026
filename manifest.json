@@ -3,7 +3,7 @@
   "short_name": "Trustyyellowcabs",
   "description": "Premium and Reliable Taxi Service in Coimbatore. Airport transfers, outstation, and city rides.",
   "lang": "en-US",
-  "start_url": ".",
+  "start_url": "/",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
