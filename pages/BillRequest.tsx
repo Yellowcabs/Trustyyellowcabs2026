@@ -3,6 +3,42 @@ import React, { useState, useEffect } from 'react';
 import { FileText, User, Phone, MapPin, Calendar, CreditCard, Car, MessageCircle, ArrowRight } from 'lucide-react';
 import { BillRequestDetails } from '../types';
 
+interface InputFieldProps {
+  label: string;
+  name: string;
+  type: string;
+  placeholder: string;
+  icon: any;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+}
+
+const InputField: React.FC<InputFieldProps> = ({ 
+  label, name, type, placeholder, icon: Icon, required, value, onChange, className = "" 
+}) => (
+  <div className={`space-y-1.5 ${className}`}>
+    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-1">
+      {label} {required && !label.includes('*') && <span className="text-brand-yellow">*</span>}
+    </label>
+    <div className="relative group">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-yellow transition-colors">
+        <Icon size={16} />
+      </div>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className="w-full pl-11 pr-4 py-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl outline-none focus:ring-2 focus:ring-brand-yellow/10 focus:border-brand-yellow dark:text-white text-sm font-semibold transition-all"
+      />
+    </div>
+  </div>
+);
+
 export const BillRequest: React.FC = () => {
   const [formData, setFormData] = useState<BillRequestDetails>({
     name: '',
@@ -51,37 +87,6 @@ Please generate a bill for the above trip.`;
     window.open(whatsappUrl, '_blank');
   };
 
-  const InputField: React.FC<{ 
-    label: string; 
-    name: string; 
-    type: string; 
-    placeholder: string; 
-    icon: any; 
-    required?: boolean;
-    value: string;
-    className?: string;
-  }> = ({ label, name, type, placeholder, icon: Icon, required, value, className = "" }) => (
-    <div className={`space-y-1.5 ${className}`}>
-      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 ml-1">
-        {label} {required && !label.includes('*') && <span className="text-brand-yellow">*</span>}
-      </label>
-      <div className="relative group">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-yellow transition-colors">
-          <Icon size={16} />
-        </div>
-        <input
-          type={type}
-          name={name}
-          required={required}
-          placeholder={placeholder}
-          value={value}
-          onChange={handleChange}
-          className="w-full pl-11 pr-4 py-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl outline-none focus:ring-2 focus:ring-brand-yellow/10 focus:border-brand-yellow dark:text-white text-sm font-semibold transition-all"
-        />
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 px-4">
       <div className="max-w-xl mx-auto">
@@ -108,6 +113,7 @@ Please generate a bill for the above trip.`;
                 icon={User} 
                 required 
                 value={formData.name}
+                onChange={handleChange}
               />
               <InputField 
                 label="Mobile" 
@@ -117,6 +123,7 @@ Please generate a bill for the above trip.`;
                 icon={Phone} 
                 required 
                 value={formData.phone}
+                onChange={handleChange}
               />
             </div>
 
@@ -128,6 +135,7 @@ Please generate a bill for the above trip.`;
               icon={Calendar} 
               required 
               value={formData.date}
+              onChange={handleChange}
             />
 
             <InputField 
@@ -138,6 +146,7 @@ Please generate a bill for the above trip.`;
               icon={CreditCard} 
               required 
               value={formData.amount}
+              onChange={handleChange}
               className="bg-brand-yellow/10 p-4 rounded-2xl border border-brand-yellow/30"
             />
 
@@ -150,6 +159,7 @@ Please generate a bill for the above trip.`;
                 icon={MapPin} 
                 required 
                 value={formData.pickup}
+                onChange={handleChange}
               />
               <InputField 
                 label="To" 
@@ -159,6 +169,7 @@ Please generate a bill for the above trip.`;
                 icon={MapPin} 
                 required 
                 value={formData.drop}
+                onChange={handleChange}
               />
             </div>
 
@@ -169,6 +180,7 @@ Please generate a bill for the above trip.`;
               placeholder="TN XX XX 0000" 
               icon={Car} 
               value={formData.vehicleNumber || ''}
+              onChange={handleChange}
             />
 
             <div className="pt-4">

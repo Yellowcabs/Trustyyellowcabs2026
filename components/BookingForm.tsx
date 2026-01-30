@@ -4,6 +4,24 @@ import { BookingDetails, VehicleType } from '../types';
 import { MapPin, User, Phone, Car, Calendar, Clock, ArrowRight, ArrowLeft, CheckCircle2, MessageCircle } from 'lucide-react';
 import { sendBookingEmail } from '../services/emailService';
 
+interface InputWrapperProps {
+  children: React.ReactNode;
+  icon: any;
+  label?: string;
+}
+
+const InputWrapper: React.FC<InputWrapperProps> = ({ children, icon: Icon, label }) => (
+  <div className="relative group">
+    {label && <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">{label}</label>}
+    <div className="relative">
+      <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-yellow transition-colors duration-300">
+        <Icon size={16} />
+      </div>
+      {children}
+    </div>
+  </div>
+);
+
 export const BookingForm: React.FC = () => {
   const [step, setStep] = useState(1);
   
@@ -94,18 +112,6 @@ I just submitted my booking on your website. Please confirm availability.`;
       setLoading(false);
     }
   };
-
-  const InputWrapper: React.FC<{ children: React.ReactNode, icon: any, label?: string }> = ({ children, icon: Icon, label }) => (
-    <div className="relative group">
-      {label && <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">{label}</label>}
-      <div className="relative">
-        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-yellow transition-colors duration-300">
-          <Icon size={16} />
-        </div>
-        {children}
-      </div>
-    </div>
-  );
 
   return (
     <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 w-full max-w-sm mx-auto transition-all duration-500 overflow-hidden">
