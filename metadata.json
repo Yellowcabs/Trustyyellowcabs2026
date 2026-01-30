@@ -1,0 +1,7 @@
+{
+  "name": "Trustyyellowcabs",
+  "description": "The most reliable and premium taxi service in Coimbatore. Airport transfers, outstation, and city rides.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
