@@ -75,7 +75,7 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-2 gap-3 sm:gap-4 order-1 lg:order-2">
              <div className="space-y-3 sm:space-y-4 mt-8 sm:mt-12">
                <img 
-                 src="public/images/ChatGPT Image Oct 12, 2025, 09_27_33 AM.jpg" 
+                 src="/images/ChatGPT Image Oct 12, 2025, 09_27_33 AM.jpg" 
                  className="rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-500 border-2 sm:border-4 border-white dark:border-slate-800 aspect-[3/4] w-full object-cover" 
                  alt="Professional Driving" 
                />
@@ -94,7 +94,7 @@ export const About: React.FC = () => {
                  </div>
                </div>
                <img 
-                 src="public/images/taxi4-5 Verticle 1080 x 1350px.jpg" 
+                 src="/images/taxi4-5 Verticle 1080 x 1350px.jpg" 
                  className="rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-500 border-2 sm:border-4 border-white dark:border-slate-800 aspect-[3/4] w-full object-cover" 
                  alt="Travel Experience" 
                />
